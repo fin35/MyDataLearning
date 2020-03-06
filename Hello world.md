@@ -1,4 +1,8 @@
-<<<<<<< HEAD
-Hello Sergei
-=======
 
+Hello Sergei
+
+1.I'm
+
+
+
+2. 
