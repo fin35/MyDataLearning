@@ -25,7 +25,8 @@ from orders o
 -- Total profit for each year
 select 
 extract('year' from order_date) as years,
-sum(profit)
+sum(profit) as profit,
+sum(sales) as sales
 from orders o 
 group by years 
 order by sum(profit) desc 
@@ -37,6 +38,26 @@ sum(profit)
 from orders o
 group by state 
 order by sum(profit) asc
+
+
+
+--Profit Ratio
+select 
+extract('year' from order_date) as years,
+cast((100-(sum(sales)-sum(profit))/sum(sales)*100) as numeric(21,16)) as profit_ratio
+from orders o
+group by years 
+
+
+--Profit per Order
+select 
+distinct order_id as uniq_order,
+sum(profit)
+from orders o 
+group by uniq_order
+order by sum(profit) asc 
+
+
 
 
 
